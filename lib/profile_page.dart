@@ -1,7 +1,9 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+class ProfilePage extends StatelessWidget {
+  const ProfilePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -9,7 +11,7 @@ class HomePage extends StatelessWidget {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         title: const Text(
-          'All Dealines',
+          'Profile',
           style: TextStyle(color: Color(0xFF606060)),
         ),
         backgroundColor: Colors.transparent,
