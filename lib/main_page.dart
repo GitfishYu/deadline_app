@@ -1,10 +1,15 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 
 import './deadline_page.dart';
 import './profile_page.dart';
 import './home_page.dart';
+import './main.dart';
+import './deadline_model.dart';
+
+late Box<DeadlineModel> deadlineBox;
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -16,6 +21,7 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   int _selectedIndex = 0;
+
   static const List<Widget> _widgetOptions = [
     HomePage(),
     ProfilePage(),
@@ -25,6 +31,13 @@ class _MainPageState extends State<MainPage> {
     setState(() {
       _selectedIndex = index;
     });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    deadlineBox = Hive.box<DeadlineModel>(deadlineBoxName);
   }
 
   @override
@@ -57,7 +70,7 @@ class _MainPageState extends State<MainPage> {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const DeadlinePage()),
+            MaterialPageRoute(builder: (context) => DeadlinePage()),
           );
         },
         child: const Icon(
